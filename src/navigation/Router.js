@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, View} from 'react-native';
 import AuthRoute from './AuthRoute';
 import AppRoute from './AppRoute';
 
@@ -11,7 +11,6 @@ const RootStack = createStackNavigator();
 const Router = () => {
   const [token, setToken] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     fetchToken();
   }, []);
@@ -29,24 +28,32 @@ const Router = () => {
 
   if (isLoading) {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
+      <>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      </>
     );
   }
 
   return (
-    <>
-      <NavigationContainer>
-        <RootStack.Navigator>
-          {token ? (
-            <RootStack.Screen name="App" component={AppRoute} />
-          ) : (
-            <RootStack.Screen name="Auth" component={AuthRoute} />
-          )}
-        </RootStack.Navigator>
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <RootStack.Navigator screenOptions={{headerShown: false}}>
+        {token ? (
+          <RootStack.Screen
+            name="App"
+            component={AppRoute}
+            screenOptions={{headerShown: false}}
+          />
+        ) : (
+          <RootStack.Screen
+            name="Auth"
+            component={AuthRoute}
+            screenOptions={{headerShown: false}}
+          />
+        )}
+      </RootStack.Navigator>
+    </NavigationContainer>
   );
 };
 

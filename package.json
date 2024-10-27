@@ -21,6 +21,7 @@
     "react-native-flash-message": "^0.4.2",
     "react-native-gesture-handler": "^2.20.0",
     "react-native-immersive": "^2.0.0",
+    "react-native-paper": "^5.12.5",
     "react-native-reanimated": "^3.15.5",
     "react-native-rename": "^3.2.14",
     "react-native-responsive-screen": "^1.4.2",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
     "@react-native/babel-preset": "0.75.4",

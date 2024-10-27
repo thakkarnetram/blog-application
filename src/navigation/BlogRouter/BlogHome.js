@@ -2,13 +2,17 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import Home from '../../components/Home';
 
-const BlogRouter = createStackNavigator();
+const Router = createStackNavigator();
 
 const BlogHome = () => {
   return (
-    <BlogRouter.Navigator>
-      <BlogRouter.Screen name="Home" component={Home} />
-    </BlogRouter.Navigator>
+    <Router.Navigator options={{headerShown: false}}>
+      <Router.Screen
+        name="Home"
+        component={Home}
+        screenOptions={{headerShown: false}}
+      />
+    </Router.Navigator>
   );
 };
 
