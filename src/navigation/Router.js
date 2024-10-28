@@ -38,7 +38,7 @@ const Router = () => {
 
   return (
     <NavigationContainer>
-      <RootStack.Navigator screenOptions={{headerShown: false}}>
+      <RootStack.Navigator screenOptions={{headerShown: null}}>
         {token ? (
           <RootStack.Screen
             name="App"

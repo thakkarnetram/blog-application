@@ -2,6 +2,7 @@ import {Image, Text, View, StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BlogHome from '../BlogRouter/BlogHome';
 
+
 const BottomRoute = createBottomTabNavigator();
 
 const BottomRouter = () => {
@@ -10,6 +11,7 @@ const BottomRouter = () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBar,
+        headerShown: false,
       }}>
       <BottomRoute.Screen
         name="Blog"
