@@ -9,8 +9,9 @@ import {
 const Router = createStackNavigator();
 
 // Components
-import Home from '../../components/Home';
-import ViewBlog from '../../components/ViewBlog';
+import Home from '../../components/Blog/Home';
+import ViewBlog from '../../components/Blog/ViewBlog';
+import AddBlog from '../../components/Blog/AddBlog';
 
 const BlogHome = () => {
   return (
@@ -58,6 +59,49 @@ const BlogHome = () => {
       <Router.Screen
         name="ViewBlog"
         component={ViewBlog}
+        options={{
+          headerShown: true,
+          header: ({navigation}) => (
+            <View style={styles.headerContainer}>
+              <View style={styles.logoContainer}>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.goBack();
+                  }}>
+                  <Image
+                    source={require('../../assets/images/back.png')}
+                    style={styles.backLogo}
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.logoContainer}>
+                <Image
+                  source={require('../../assets/images/logo.png')}
+                  style={styles.logo}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.iconsContainer}>
+                <TouchableOpacity onPress={() => console.log('Search pressed')}>
+                  <Icon name="search" size={24} color="#6A42F5" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => console.log('Profile pressed')}
+                  style={styles.profileContainer}>
+                  <Image
+                    source={require('../../assets/images/profile.png')}
+                    style={styles.profileImage}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+          ),
+        }}
+      />
+      <Router.Screen
+        name="AddBlog"
+        component={AddBlog}
         options={{
           headerShown: true,
           header: ({navigation}) => (

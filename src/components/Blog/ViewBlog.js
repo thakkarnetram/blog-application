@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
   ScrollView,
 } from 'react-native';
-import {SERVER_URL} from '../../constants';
+import {SERVER_URL} from '../../../constants';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,

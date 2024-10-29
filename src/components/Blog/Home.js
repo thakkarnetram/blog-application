@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import {SERVER_URL} from '../../constants';
+import {SERVER_URL} from '../../../constants';
 import {useFocusEffect} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -42,6 +42,7 @@ const Home = ({navigation}) => {
   );
 
   const fetchBlogData = async jwt => {
+    console.log(jwt);
     try {
       const response = await fetch(`${SERVER_URL}/blogs`, {
         method: 'GET',
@@ -86,11 +87,13 @@ const Home = ({navigation}) => {
       <View style={styles.header}>
         <Text style={styles.headerText}>Blogs</Text>
         <View style={styles.actions}>
-          <TouchableOpacity onPress={() => console.log('Add new')}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('AddBlog', {
+                token,
+              })
+            }>
             <Text style={styles.addNew}>Add new</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log('Preview')}>
-            <Text style={styles.previewButton}>Preview</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -133,14 +136,14 @@ const styles = StyleSheet.create({
   },
   addNew: {
     color: '#6A42F5',
-    fontSize: 16,
-    marginRight: 10,
+    fontSize: wp('4.5%'),
+    marginRight: hp('3%'),
   },
   previewButton: {
     color: '#FFF',
     backgroundColor: '#6A42F5',
-    paddingVertical: 4,
-    paddingHorizontal: 12,
+    paddingVertical: wp('3%'),
+    paddingHorizontal: wp('5%'),
     borderRadius: 8,
   },
   loader: {
